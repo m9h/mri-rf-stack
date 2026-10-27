@@ -1,0 +1,29 @@
+name: Fedora RPM
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  rpm:
+    runs-on: ubuntu-latest
+    container: fedora:44
+    timeout-minutes: 15
+    steps:
+      - name: Install build requirements
+        run: dnf install -y git tar gzip rpm-build python3-devel pyproject-rpm-macros python3-setuptools python3-wheel python3-numpy python3-scipy python3-h5py python3-pytest
+      - uses: actions/checkout@v4
+      - name: Build from checked-out source
+        run: |
+          mkdir -p /tmp/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+          git -c safe.directory="$GITHUB_WORKSPACE" archive --format=tar --prefix=mri-rf-stack-0.1.0/ HEAD | gzip > /tmp/rpmbuild/SOURCES/mri-rf-stack-0.1.0.tar.gz
+          rpmbuild -ba --define '_topdir /tmp/rpmbuild' packaging/python-mri-rf-stack.spec
+      - name: Install and verify the built package
+        run: |
+          dnf install -y /tmp/rpmbuild/RPMS/noarch/python3-mri-rf-stack-*.rpm
+          mri-rf --help
+          python3 -c 'from mri_rf.inverse import minimum_norm_operator; import numpy as np; assert minimum_norm_operator(np.eye(2), np.eye(2))[0].shape == (2,2)'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fedora-44-rpm
+          path: |
+            /tmp/rpmbuild/RPMS/**/*.rpm
+            /tmp/rpmbuild/SRPMS/*.rpm

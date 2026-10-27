@@ -1,0 +1,19 @@
+{
+  "b0_t": 3.0,
+  "rungs": 8,
+  "radius_m": 0.15,
+  "length_m": 0.26,
+  "strip_width_m": 0.012,
+  "gap_m": 0.008,
+  "capacitance_f": 3e-11,
+  "shield_radius_m": 0.2,
+  "shield_length_m": 0.42,
+  "phantom_radius_m": 0.09,
+  "phantom_length_m": 0.18,
+  "epsilon_r": 60.0,
+  "sigma_s_m": 0.5,
+  "density_kg_m3": 1000.0,
+  "air_margin_m": 0.12,
+  "mesh_m": 0.035,
+  "passes": 12
+}

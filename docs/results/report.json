@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "source": "Hertzon 0.1.25 / EMerge 3.0.0a25",
+  "frequency_hz": 127732435.554,
+  "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+  "drive_sqrt_w": [
+    [
+      1.0,
+      0.0
+    ]
+  ],
+  "unscaled_incident_w": 1.0,
+  "unscaled_accepted_w": 0.014601473271069976,
+  "target_accepted_w": 1.0,
+  "duty_cycle": 1.0,
+  "selected_volumes": [
+    "Phantom"
+  ],
+  "tissue_mass_kg": 4.520480115658417,
+  "tissue_absorbed_w": 0.7523719734056866,
+  "tissue_absorbed_fraction": 0.7523719734056866,
+  "mean_sar_w_kg": 0.1664362975073284,
+  "max_element_mean_sar_w_kg": 2.7521589108329443,
+  "bplus_mean_uT": 0.4821553227919201,
+  "bplus_coefficient_of_variation": 0.7989169324158852,
+  "tetrahedra_total": 16189,
+  "tetrahedra_tissue": 1085,
+  "convergence": {
+    "passes": [
+      {
+        "pass": 1,
+        "tets": 3451,
+        "time": 0.5657107830047607,
+        "S": [
+          [
+            [
+              0.7121258756370736,
+              0.6655479603798438
+            ]
+          ]
+        ],
+        "memory_mb": 396.4
+      },
+      {
+        "pass": 2,
+        "tets": 5016,
+        "time": 0.7162749767303467,
+        "S": [
+          [
+            [
+              0.5774760558045019,
+              0.8045101192554374
+            ]
+          ]
+        ],
+        "delta_tets": 45.34917415241959,
+        "memory_mb": 470.8,
+        "delta_s": 0.1934969136195969,
+        "delta_mag": 0.015591507928944703,
+        "delta_phase": 11.26565761672035,
+        "passed": false
+      },
+      {
+        "pass": 3,
+        "tets": 6615,
+        "time": 0.398082971572876,
+        "S": [
+          [
+            [
+              0.6163476276661346,
+              0.7762784249865113
+            ]
+          ]
+        ],
+        "delta_tets": 31.877990430622006,
+        "memory_mb": 531.8,
+        "delta_s": 0.04804193647521076,
+        "delta_mag": 0.0008970213645235203,
+        "delta_phase": 2.778061926573164,
+        "passed": false
+      },
+      {
+        "pass": 4,
+        "tets": 8000,
+        "time": 0.48241591453552246,
+        "S": [
+          [
+            [
+              0.6484103787480286,
+              0.7505865462332266
+            ]
+          ]
+        ],
+        "delta_tets": 20.937263794406658,
+        "memory_mb": 543.3,
+        "delta_s": 0.04108640457393395,
+        "delta_mag": 0.0006674413564428106,
+        "delta_phase": 2.3740164004060347,
+        "passed": false
+      },
+      {
+        "pass": 5,
+        "tets": 10491,
+        "time": 1.0033128261566162,
+        "S": [
+          [
+            [
+              0.6693256823798394,
+              0.732604183695988
+            ]
+          ]
+        ],
+        "delta_tets": 31.137499999999996,
+        "memory_mb": 673.4,
+        "delta_s": 0.02758288035052752,
+        "delta_mag": 0.0004483303501027214,
+        "delta_phase": 1.5928091690358308,
+        "passed": false
+      },
+      {
+        "pass": 6,
+        "tets": 13224,
+        "time": 0.873511791229248,
+        "S": [
+          [
+            [
+              0.6991292020475612,
+              0.704560020154939
+            ]
+          ]
+        ],
+        "delta_tets": 26.05090077209036,
+        "memory_mb": 764.4,
+        "delta_s": 0.04092340275809657,
+        "delta_mag": 0.00024218185079050158,
+        "delta_phase": 2.3627148389645174,
+        "passed": false
+      },
+      {
+        "pass": 7,
+        "tets": 16189,
+        "time": 1.1018309593200684,
+        "S": [
+          [
+            [
+              0.7090116304945984,
+              0.6947668922396354
+            ]
+          ]
+        ],
+        "delta_tets": 22.42135511191772,
+        "memory_mb": 825.5,
+        "delta_s": 0.013912862623353532,
+        "delta_mag": 0.00010682022566110838,
+        "delta_phase": 0.8030587105642403,
+        "passed": true
+      }
+    ],
+    "converged": true,
+    "max_delta_s": 0.02,
+    "final_tets": 16189,
+    "frequencies": [
+      127732435.55399999
+    ]
+  },
+  "validation": "research output; field/mesh convergence and independent solver checks required",
+  "power_balance_check": "within bound",
+  "sar_averaging": "tetrahedron mean only; no 1 g or 10 g averaging"
+}
