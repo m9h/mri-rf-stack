@@ -138,11 +138,15 @@ reference reports are committed under `docs/results/`; raw FEM caches are not.
 CI runs numerical tests and a full-wave smoke solve. S-parameter convergence does
 not establish field/SAR convergence or experimental agreement.
 
-The next validation target is the same physical model in openEMS, followed by
-phantom measurements. The existing openEMS MRI example has different geometry,
-ports, and boundaries and is **not** an apples-to-apples reference for these
-numbers. Anatomical meshing, a realistic multichannel receive array, validated
-mass-averaged SAR, and end-to-end InI acquisition remain development work.
+An [independent openEMS comparison](docs/openems-comparison.md) now uses the same
+nominal geometry, loading, feed and outer-box dimensions. Its first completed
+run shows material differences from the original FEM result; it does not yet
+establish solver agreement. The tools report native-volume metrics and compare
+complex fields on shared interior points without fitting their amplitudes.
+The stock openEMS MRI tutorial has different geometry, ports and boundaries.
+Anatomical meshing, a realistic multichannel receive array, validated
+mass-averaged SAR, phantom measurements and end-to-end InI acquisition remain
+development work.
 
 ## References
 

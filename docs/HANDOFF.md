@@ -1,5 +1,30 @@
 # Reboot handoff: MRI RF Stack
 
+## Comparison development — 2026-11-11
+
+The user resumed the project and requested the independent openEMS comparison.
+The new `mri_rf.openems` runner and `mri_rf.compare` shared-grid evaluator are
+implemented. See `docs/openems-comparison.md` for the evolving results.
+
+Native solver libraries live in `outputs/openems-install`; their Python bindings
+are installed in the existing `.venv`. The pinned full upstream source clone is
+`outputs/openems-src`. All are inside the project; no system openEMS install was
+made. `outputs/openems-coarse` is the completed, corrected 6 mm reference. The
+older `outputs/openems-6mm` was an exploratory run with narrowed diagonal strips
+and insufficient time steps; do not use it for comparison.
+
+`outputs/openems-fine` was a slow CPU attempt, stopped with an `ABORT` file.
+`outputs/openems-fine-gpu` failed because the sandbox could not see the GPU.
+`outputs/openems-fine-metal` is the 4 mm refinement running with authorized
+Metal access. `outputs/hertzon-higher-order` is a supplemental FEM run using
+20 mm initial tissue mesh, First Order basis, ΔS=0.005 and at most 12 passes.
+The original published FEM benchmark has not been overwritten.
+
+The comparison tools reject incomplete FDTD runs. Initial diagnostics found
+four expected PEC components and total rung capacitance preserved at 30 pF.
+The original FEM and coarse FDTD results differ; do not describe agreement as
+established. Fine results and final publishing status must be checked on resume.
+
 Start here after reboot. The development work, reference results, and packaging
 changes have been saved locally and published to GitHub. No running solver or
 temporary download is required to use the saved results.

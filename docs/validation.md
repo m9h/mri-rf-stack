@@ -1,5 +1,9 @@
 # Validation record — 2026-10-25
 
+An independent openEMS cross-check was subsequently added. See the
+[comparison record](openems-comparison.md) for its results and limitations;
+the dated original reference record below is retained.
+
 ## Executed locally
 
 macOS arm64, CPython 3.12.13, Hertzon 0.1.25, EMerge 3.0.0a25, Gmsh 4.15.2,

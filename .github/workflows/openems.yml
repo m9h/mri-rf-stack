@@ -1,0 +1,68 @@
+name: openEMS
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/mri_rf/openems.py'
+      - 'src/mri_rf/compare.py'
+      - 'tests/test_comparison.py'
+      - '.github/workflows/openems.yml'
+  pull_request:
+    paths:
+      - 'src/mri_rf/openems.py'
+      - 'src/mri_rf/compare.py'
+      - 'tests/test_comparison.py'
+      - '.github/workflows/openems.yml'
+permissions:
+  contents: read
+jobs:
+  fdtd:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ libhdf5-dev libtinyxml-dev zlib1g-dev libboost-thread-dev libboost-date-time-dev libboost-serialization-dev libboost-chrono-dev libboost-program-options-dev
+          python -m pip install '.[test,plot]' cython wheel setuptools
+      - name: Build pinned native solver and Python bindings
+        run: |
+          git clone --no-checkout https://github.com/thliebig/openEMS-Project.git "$RUNNER_TEMP/openems-source"
+          cd "$RUNNER_TEMP/openems-source"
+          git checkout 622ac90e3f37700445df424779465e6a25d3c155
+          git submodule update --init --recursive
+          ./update_openEMS.sh "$RUNNER_TEMP/openems" --disable-GUI --skip-dep-check --njobs=2
+          export CSXCAD_INSTALL_PATH="$RUNNER_TEMP/openems"
+          export OPENEMS_INSTALL_PATH="$RUNNER_TEMP/openems"
+          export CSXCAD_NOSCM=1 OPENEMS_NOSCM=1
+          python -m pip install --no-build-isolation --no-deps ./CSXCAD/python
+          python -m pip install --no-build-isolation --no-deps ./openEMS/python
+      - run: python -m pytest -q
+      - name: Run coarse smoke solve (not a convergence study)
+        run: python -m mri_rf.openems outputs/openems --config docs/results/config.json --cell-mm 6 --end-criteria 1e-4 --max-steps 1000000 --threads 2
+      - name: Check physical bounds and termination
+        run: |
+          python - <<'PY'
+          import json
+          r = json.load(open('outputs/openems/report.json'))
+          assert r['energy_decay_db'] <= -40
+          assert 4.3 < r['tissue_mass_kg'] < 4.9
+          assert 0 < r['tissue_absorbed_fraction'] <= 1.05
+          assert 0 < r['unscaled_accepted_w'] < 1
+          assert r['bplus_mean_uT'] > 0
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: openems-smoke
+          path: |
+            outputs/openems/*.json
+            outputs/openems/*.xml
+            outputs/openems/*.npz
+            outputs/openems/*.txt
+            outputs/openems/solver.log
+          retention-days: 14
