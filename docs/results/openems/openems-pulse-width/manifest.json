@@ -1,0 +1,108 @@
+{
+  "config": {
+    "b0_t": 3.0,
+    "rungs": 8,
+    "radius_m": 0.15,
+    "length_m": 0.26,
+    "strip_width_m": 0.012,
+    "gap_m": 0.008,
+    "capacitance_f": 3e-11,
+    "shield_radius_m": 0.2,
+    "shield_length_m": 0.42,
+    "phantom_radius_m": 0.09,
+    "phantom_length_m": 0.18,
+    "epsilon_r": 60.0,
+    "sigma_s_m": 0.5,
+    "density_kg_m3": 1000.0,
+    "air_margin_m": 0.12,
+    "mesh_m": 0.035,
+    "passes": 12
+  },
+  "cell_m": 0.006,
+  "frequency_hz": 127732435.55399999,
+  "gaussian_cutoff_hz": 5000000.0,
+  "dump_oversampling": 4,
+  "end_criteria": 1e-08,
+  "max_steps": 2000000,
+  "boundary": "first-order Mur on the same nominal outer box as Hertzon",
+  "mesh_lines": [
+    85,
+    85,
+    90
+  ],
+  "mesh_cells": 627984,
+  "box_m": [
+    [
+      -0.32,
+      0.32
+    ],
+    [
+      -0.32,
+      0.32
+    ],
+    [
+      -0.33,
+      0.33
+    ]
+  ],
+  "rungs": [
+    {
+      "projected_width_m": 0.012,
+      "max_plane_error_m": 0.0,
+      "capacitor_nodes": 3,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.011999999999662628,
+      "max_plane_error_m": 0.002999999999890396,
+      "capacitor_nodes": 5,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.012,
+      "max_plane_error_m": 0.0,
+      "capacitor_nodes": 3,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.011999999999662628,
+      "max_plane_error_m": 0.002999999999890396,
+      "capacitor_nodes": 5,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.012,
+      "max_plane_error_m": 0.0,
+      "capacitor_nodes": 3,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.011999999999662628,
+      "max_plane_error_m": 0.002999999999890368,
+      "capacitor_nodes": 5,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.012,
+      "max_plane_error_m": 0.0,
+      "capacitor_nodes": 3,
+      "capacitance_f": 3e-11
+    },
+    {
+      "projected_width_m": 0.011999999999662628,
+      "max_plane_error_m": 0.002999999999890396,
+      "capacitor_nodes": 5,
+      "capacitance_f": 2.9999999999999993e-11
+    }
+  ],
+  "sheet_discretization": "zero-thickness Cartesian staircase; no finite conductor thickness",
+  "material_discretization": "cell-centre constant epsilon, conductivity and density",
+  "python_versions": {
+    "openEMS": "0.37.0",
+    "CSXCAD": "0.7.0",
+    "numpy": "2.2.6",
+    "h5py": "3.16.0"
+  },
+  "requested_engine": "gpu",
+  "requested_threads": 6
+}

@@ -138,11 +138,12 @@ reference reports are committed under `docs/results/`; raw FEM caches are not.
 CI runs numerical tests and a full-wave smoke solve. S-parameter convergence does
 not establish field/SAR convergence or experimental agreement.
 
-An [independent openEMS comparison](docs/openems-comparison.md) now uses the same
-nominal geometry, loading, feed and outer-box dimensions. Its first completed
-run shows material differences from the original FEM result; it does not yet
-establish solver agreement. The tools report native-volume metrics and compare
-complex fields on shared interior points without fitting their amplitudes.
+An [independent openEMS comparison](docs/openems-comparison.md) uses the same
+nominal geometry, loading, feed and outer-box dimensions. Higher-order FEM and
+4 mm FDTD have interior B1+ correlation 0.99974. Mean B1+ differs by 2.47% at
+equal incident power, but 20.97% at equal accepted power; the power-balance
+remainder is unresolved. Reports, plots, raw data and sensitivity diagnostics
+are published with explicit convergence limits. No amplitude fitting is used.
 The stock openEMS MRI tutorial has different geometry, ports and boundaries.
 Anatomical meshing, a realistic multichannel receive array, validated
 mass-averaged SAR, phantom measurements and end-to-end InI acquisition remain

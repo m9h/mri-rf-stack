@@ -1,33 +1,54 @@
 # Reboot handoff: MRI RF Stack
 
-## Comparison development — 2026-11-11
+## Completed comparison — 2026-11-11
 
-The user resumed the project and requested the independent openEMS comparison.
-The new `mri_rf.openems` runner and `mri_rf.compare` shared-grid evaluator are
-implemented. See `docs/openems-comparison.md` for the evolving results.
+The independent openEMS comparison is implemented and published on main. See
+[the report](openems-comparison.md) and committed evidence in `results/openems/`.
+The original v0.1.0 benchmark remains unchanged. Initial comparison code was
+published as `09a3402`; the later results commit adds the final reference pulse,
+incident-power diagnostics, sensitivity evidence and this handoff.
 
-Native solver libraries live in `outputs/openems-install`; their Python bindings
-are installed in the existing `.venv`. The pinned full upstream source clone is
-`outputs/openems-src`. All are inside the project; no system openEMS install was
-made. `outputs/openems-coarse` is the completed, corrected 6 mm reference. The
-older `outputs/openems-6mm` was an exploratory run with narrowed diagonal strips
-and insufficient time steps; do not use it for comparison.
+Higher-order Hertzon versus final 4 mm openEMS: interior B1+ correlation 0.99974,
+mean B1+ difference +2.47% per incident power and +20.97% per accepted power.
+Phantom absorption differs +5.07% per incident power and +46.43% per accepted
+power. The accepted-minus-phantom power remainder differs substantially; its
+cause is unresolved. Do not describe this as validated physical performance.
 
-`outputs/openems-fine` was a slow CPU attempt, stopped with an `ABORT` file.
-`outputs/openems-fine-gpu` failed because the sandbox could not see the GPU.
-`outputs/openems-fine-metal` is the 4 mm refinement running with authorized
-Metal access. `outputs/hertzon-higher-order` is a supplemental FEM run using
-20 mm initial tissue mesh, First Order basis, ΔS=0.005 and at most 12 passes.
-The original published FEM benchmark has not been overwritten.
+Final local outputs:
 
-The comparison tools reject incomplete FDTD runs. Initial diagnostics found
-four expected PEC components and total rung capacitance preserved at 30 pF.
-The original FEM and coarse FDTD results differ; do not describe agreement as
-established. Fine results and final publishing status must be checked on resume.
+- `outputs/openems-narrow-coarse` and `outputs/openems-narrow-fine`: completed
+  6/4 mm references, 10 MHz Gaussian cutoff offset, −80 dB requested decay.
+- `outputs/hertzon-higher-order`: completed First Order FEM, initial tissue mesh
+  20 mm, ΔS threshold 0.005; ten passes and 56,176 tetrahedra.
+- `outputs/comparison-higher-order`: shared-grid comparison and both power-basis
+  plots; `outputs/comparison-final` compares the original FEM against final FDTD.
+- `outputs/openems-pulse-width`: completed 5 MHz, −80 dB sensitivity run; B1+
+  changes −0.00805% from the 10 MHz coarse reference.
+- `outputs/openems-coarse`, `outputs/openems-coarse-metal` and
+  `outputs/openems-fine-metal`: earlier completed wideband/−60 dB diagnostics.
+  CPU/Metal differences are a few ppm; these are not the final reference pulse.
+- `outputs/openems-pulse-check`: failed −100 dB experiment, stopped after late
+  energy growth. Status is incomplete; excluded from comparisons and retained.
+- `outputs/openems-6mm`: obsolete exploratory geometry with narrowed diagonal
+  strips and insufficient steps. `outputs/openems-fine`: aborted CPU attempt.
+  `outputs/openems-fine-gpu`: failed sandbox GPU access. None is a valid result.
 
-Start here after reboot. The development work, reference results, and packaging
-changes have been saved locally and published to GitHub. No running solver or
-temporary download is required to use the saved results.
+Native libraries live in `outputs/openems-install`; bindings are in `.venv`;
+the pinned full upstream clone is `outputs/openems-src`. No system openEMS
+install was made. Metal runs required authorized access outside the sandbox.
+No solver remains running. Final raw data and logs are preserved in the
+[comparison prerelease](https://github.com/m9h/mri-rf-stack/releases/tag/openems-comparison-2026-11-11).
+The ZIP includes a file manifest and SHA256 checksums; it excludes environments,
+upstream sources and transient compilation caches.
+
+The comparison implementation passed 24 local tests. GitHub checks on `09a3402`
+passed Python tests, Hertzon Linux smoke, openEMS native Linux build/smoke and
+Fedora RPM build/install. Later commits have their own Actions records; inspect
+the latest source commit's runs before claiming those exact checks passed.
+
+The original recovery checkpoint below predates this comparison. Use the new
+comparison release for these additional outputs; the v0.1.0 recovery files and
+packaging checkout remain intact.
 
 ## What the user requested
 
@@ -176,9 +197,9 @@ are saved in the project.
 
 ## Next development work
 
-1. Construct an independent openEMS comparison with the **same geometry, drive,
-   loading, normalization and boundaries**. The stock openEMS birdcage example
-   differs and is not a direct numerical reference.
+1. Resolve the comparison's power remainder with outer-boundary sensitivity
+   and an explicit flux audit; investigate the late-time FDTD tail. The nominal
+   geometry and box are shared, but numerical boundary implementations differ.
 2. Study field/SAR convergence, polynomial order, air-boundary distance and mesh
    sensitivity; tune and match the coil separately from checking solver plumbing.
 3. Add anatomical label/mesh adapters and a realistic multichannel receive array.

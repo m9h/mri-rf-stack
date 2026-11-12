@@ -93,6 +93,16 @@ def compare(hertzon, config_path, openems, output, *, inset_m=0.015, spacing_m=0
         )
     s11 = complex(params["S"][0, 0, 0])
     reference["s11"] = [s11.real, s11.imag]
+
+    def incident_metrics(report):
+        accepted = report["unscaled_accepted_w"] / report["unscaled_incident_w"]
+        return {
+            "phantom_absorbed_w_per_incident_w": report["tissue_absorbed_w"] * accepted,
+            "bplus_mean_uT_per_sqrt_incident_w": report["bplus_mean_uT"] * np.sqrt(accepted),
+            "accepted_minus_phantom_w_per_incident_w": accepted * (1 - report["tissue_absorbed_w"]),
+        }
+
+    reference.update(incident_metrics(reference))
     selected = mesh["tet_obj"] == mesh["obj_names"].tolist().index("Phantom")
     tetrahedra = mesh["nodes"][mesh["tets"][selected]]
     npt = 10 if "tet10" in fields else 4
@@ -125,6 +135,7 @@ def compare(hertzon, config_path, openems, output, *, inset_m=0.015, spacing_m=0
     for index, folder in enumerate(map(Path, openems)):
         manifest = json.loads((folder / "manifest.json").read_text())
         report = json.loads((folder / "report.json").read_text())
+        report.update(incident_metrics(report))
         if json.loads((folder / "status.json").read_text()).get("state") != "done":
             raise ValueError(f"incomplete openEMS run: {folder}")
         physical_keys = set(manifest["config"]) - {"mesh_m", "passes"}
@@ -146,6 +157,9 @@ def compare(hertzon, config_path, openems, output, *, inset_m=0.015, spacing_m=0
             "tissue_absorbed_w",
             "mean_sar_w_kg",
             "bplus_mean_uT",
+            "phantom_absorbed_w_per_incident_w",
+            "bplus_mean_uT_per_sqrt_incident_w",
+            "accepted_minus_phantom_w_per_incident_w",
         ):
             bulk[key] = {
                 "hertzon": reference[key],
@@ -159,6 +173,10 @@ def compare(hertzon, config_path, openems, output, *, inset_m=0.015, spacing_m=0
                 "bulk": bulk,
                 "absolute_complex_s11_difference": float(abs(complex(*report["s11"]) - s11)),
                 "interior_bplus": field_metrics(b_ref, bplus),
+                "interior_bplus_per_incident": field_metrics(
+                    b_ref * np.sqrt(reference["unscaled_accepted_w"]),
+                    bplus * np.sqrt(report["unscaled_accepted_w"]),
+                ),
                 "interior_e_vector": field_metrics(e_ref, e),
                 "interior_h_vector": field_metrics(h_ref, h),
             }

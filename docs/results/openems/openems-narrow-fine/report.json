@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source": "openEMS / Cartesian FDTD",
+  "native_version": "v0.37.0-50-g1d710c2",
+  "native_engine": "(GPU, backend: Metal (Apple M5 Max))",
+  "frequency_hz": 127732435.55399999,
+  "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+  "s11": [
+    0.8436148675488291,
+    0.5307446212449447
+  ],
+  "reference_impedance_ohm": 50,
+  "unscaled_incident_w": 1,
+  "unscaled_accepted_w": 0.006624102270131771,
+  "target_accepted_w": 1,
+  "duty_cycle": 1,
+  "spectral_normalization": "E,H / sqrt(P_acc), phase referenced to incident voltage; pulse units cancel",
+  "tissue_mass_kg": 4.59935998916626,
+  "tissue_absorbed_w": 0.9554448215741118,
+  "tissue_absorbed_fraction": 0.9554448215741118,
+  "mean_sar_w_kg": 0.20773429864690984,
+  "max_cell_local_sar_w_kg": 3.7897371545460246,
+  "bplus_mean_uT": 0.5472271954397079,
+  "bplus_coefficient_of_variation": 0.7799553570646308,
+  "energy_decay_db": -89.12,
+  "timesteps": 73920,
+  "mesh_cells": 2080768,
+  "cell_m": 0.004,
+  "power_balance_check": "within bound",
+  "sar_averaging": "cell-interpolated E local SAR; no 1 g or 10 g averaging",
+  "validation": "independent solver output; discretization and boundary convergence required"
+}

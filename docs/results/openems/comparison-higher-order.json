@@ -1,0 +1,503 @@
+{
+  "schema_version": 1,
+  "physical_config": {
+    "b0_t": 3.0,
+    "rungs": 8,
+    "radius_m": 0.15,
+    "length_m": 0.26,
+    "strip_width_m": 0.012,
+    "gap_m": 0.008,
+    "capacitance_f": 3e-11,
+    "shield_radius_m": 0.2,
+    "shield_length_m": 0.42,
+    "phantom_radius_m": 0.09,
+    "phantom_length_m": 0.18,
+    "epsilon_r": 60.0,
+    "sigma_s_m": 0.5,
+    "density_kg_m3": 1000.0,
+    "air_margin_m": 0.12,
+    "mesh_m": 0.02,
+    "passes": 12
+  },
+  "hertzon_report": {
+    "schema_version": 1,
+    "source": "Hertzon 0.1.25 / EMerge 3.0.0a25",
+    "frequency_hz": 127732435.554,
+    "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+    "drive_sqrt_w": [
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "unscaled_incident_w": 1.0,
+    "unscaled_accepted_w": 0.00923230236287631,
+    "target_accepted_w": 1.0,
+    "duty_cycle": 1.0,
+    "selected_volumes": [
+      "Phantom"
+    ],
+    "tissue_mass_kg": 4.554327465325223,
+    "tissue_absorbed_w": 0.6524742598112043,
+    "tissue_absorbed_fraction": 0.6524742598112043,
+    "mean_sar_w_kg": 0.14326467843581192,
+    "max_element_mean_sar_w_kg": 2.2161682365315474,
+    "bplus_mean_uT": 0.45237500275017056,
+    "bplus_coefficient_of_variation": 0.7558071267249437,
+    "tetrahedra_total": 56176,
+    "tetrahedra_tissue": 3253,
+    "convergence": {
+      "passes": [
+        {
+          "pass": 1,
+          "tets": 6241,
+          "time": 86.82974886894226,
+          "S": [
+            [
+              [
+                0.6915955824473358,
+                0.7121877129298633
+              ]
+            ]
+          ],
+          "memory_mb": 907.7
+        },
+        {
+          "pass": 2,
+          "tets": 9119,
+          "time": 177.32247805595398,
+          "S": [
+            [
+              [
+                0.7871856265067376,
+                0.6069867116327297
+              ]
+            ]
+          ],
+          "delta_tets": 46.114404742829684,
+          "memory_mb": 1333.1,
+          "delta_s": 0.14214326293285198,
+          "delta_mag": 0.0012977358462199495,
+          "delta_phase": 8.20514978595087,
+          "passed": false
+        },
+        {
+          "pass": 3,
+          "tets": 12201,
+          "time": 200.13843989372253,
+          "S": [
+            [
+              [
+                0.8102132735217005,
+                0.5767998597696661
+              ]
+            ]
+          ],
+          "delta_tets": 33.797565522535365,
+          "memory_mb": 1702.5,
+          "delta_s": 0.03796733533510447,
+          "delta_mag": 0.0005277860903850629,
+          "delta_phase": 2.187775504597694,
+          "passed": false
+        },
+        {
+          "pass": 4,
+          "tets": 15417,
+          "time": 245.6946041584015,
+          "S": [
+            [
+              [
+                0.8231811526682385,
+                0.5585554374908516
+              ]
+            ]
+          ],
+          "delta_tets": 26.358495205311037,
+          "memory_mb": 2183.1,
+          "delta_s": 0.02238358402595349,
+          "delta_mag": 0.00023513219979520716,
+          "delta_phase": 1.2893073204220635,
+          "passed": false
+        },
+        {
+          "pass": 5,
+          "tets": 18435,
+          "time": 183.2897448539734,
+          "S": [
+            [
+              [
+                0.8331711805754808,
+                0.5438723512184152
+              ]
+            ]
+          ],
+          "delta_tets": 19.575792955827986,
+          "memory_mb": 2751.5,
+          "delta_s": 0.01775932656581576,
+          "delta_mag": 0.0001809076304767343,
+          "delta_phase": 1.022728903646023,
+          "passed": false
+        },
+        {
+          "pass": 6,
+          "tets": 21828,
+          "time": 88.53525185585022,
+          "S": [
+            [
+              [
+                0.8387000511608339,
+                0.5355435817207376
+              ]
+            ]
+          ],
+          "delta_tets": 18.405207485760776,
+          "memory_mb": 3554.4,
+          "delta_s": 0.009996840065492063,
+          "delta_mag": 0.00012730845983532912,
+          "delta_phase": 0.5755895330643398,
+          "passed": false
+        },
+        {
+          "pass": 7,
+          "tets": 29684,
+          "time": 172.9636058807373,
+          "S": [
+            [
+              [
+                0.8437552109278365,
+                0.5277331649256708
+              ]
+            ]
+          ],
+          "delta_tets": 35.99047095473704,
+          "memory_mb": 3667.0,
+          "delta_s": 0.00930361493090629,
+          "delta_mag": 0.0001007111737159061,
+          "delta_phase": 0.5356259876120923,
+          "passed": false
+        },
+        {
+          "pass": 8,
+          "tets": 37295,
+          "time": 314.5281648635864,
+          "S": [
+            [
+              [
+                0.8476901076244516,
+                0.5215151052790437
+              ]
+            ]
+          ],
+          "delta_tets": 25.640075461528088,
+          "memory_mb": 3667.0,
+          "delta_s": 0.007358510568181977,
+          "delta_mag": 6.600169418669033e-05,
+          "delta_phase": 0.42361452083451584,
+          "passed": false
+        },
+        {
+          "pass": 9,
+          "tets": 46284,
+          "time": 505.5963740348816,
+          "S": [
+            [
+              [
+                0.8505205096897278,
+                0.5169986119357405
+              ]
+            ]
+          ],
+          "delta_tets": 24.10242659873978,
+          "memory_mb": 3814.8,
+          "delta_s": 0.005330092679421397,
+          "delta_mag": 5.836380302193245e-05,
+          "delta_phase": 0.3068170640252305,
+          "passed": false
+        },
+        {
+          "pass": 10,
+          "tets": 56176,
+          "time": 648.5825343132019,
+          "S": [
+            [
+              [
+                0.8529950998155649,
+                0.512998106553775
+              ]
+            ]
+          ],
+          "delta_tets": 21.372396508512658,
+          "memory_mb": 5052.6,
+          "delta_s": 0.004704002508718,
+          "delta_mag": 4.771967599226379e-05,
+          "delta_phase": 0.27076512427400484,
+          "passed": true
+        }
+      ],
+      "converged": true,
+      "max_delta_s": 0.005,
+      "final_tets": 56176,
+      "frequencies": [
+        127732435.55399999
+      ]
+    },
+    "validation": "research output; field/mesh convergence and independent solver checks required",
+    "power_balance_check": "within bound",
+    "sar_averaging": "tetrahedron mean only; no 1 g or 10 g averaging",
+    "s11": [
+      0.8529950998155649,
+      0.512998106553775
+    ],
+    "phantom_absorbed_w_per_incident_w": 0.0060238396505709535,
+    "bplus_mean_uT_per_sqrt_incident_w": 0.04346639361288888,
+    "accepted_minus_phantom_w_per_incident_w": 0.003208462712305357
+  },
+  "comparisons": [
+    {
+      "name": "openems-narrow-coarse",
+      "openems_report": {
+        "schema_version": 1,
+        "source": "openEMS / Cartesian FDTD",
+        "native_version": "v0.37.0-50-g1d710c2",
+        "native_engine": "(GPU, backend: Metal (Apple M5 Max))",
+        "frequency_hz": 127732435.55399999,
+        "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+        "s11": [
+          0.8261174894822093,
+          0.5571224594210257
+        ],
+        "reference_impedance_ohm": 50,
+        "unscaled_incident_w": 1,
+        "unscaled_accepted_w": 0.007144458780279361,
+        "target_accepted_w": 1,
+        "duty_cycle": 1,
+        "spectral_normalization": "E,H / sqrt(P_acc), phase referenced to incident voltage; pulse units cancel",
+        "tissue_mass_kg": 4.639678955078125,
+        "tissue_absorbed_w": 0.950355048938141,
+        "tissue_absorbed_fraction": 0.950355048938141,
+        "mean_sar_w_kg": 0.2048320709556807,
+        "max_cell_local_sar_w_kg": 3.6023806804055685,
+        "bplus_mean_uT": 0.5440455604207718,
+        "bplus_coefficient_of_variation": 0.8003263854309125,
+        "energy_decay_db": -88.45,
+        "timesteps": 39920,
+        "mesh_cells": 627984,
+        "cell_m": 0.006,
+        "power_balance_check": "within bound",
+        "sar_averaging": "cell-interpolated E local SAR; no 1 g or 10 g averaging",
+        "validation": "independent solver output; discretization and boundary convergence required",
+        "phantom_absorbed_w_per_incident_w": 0.006789772473768924,
+        "bplus_mean_uT_per_sqrt_incident_w": 0.04598539678397194,
+        "accepted_minus_phantom_w_per_incident_w": 0.0003546863065104374
+      },
+      "bulk": {
+        "unscaled_accepted_w": {
+          "hertzon": 0.00923230236287631,
+          "openems": 0.007144458780279361,
+          "relative_difference": -0.2261454944318444
+        },
+        "tissue_mass_kg": {
+          "hertzon": 4.554327465325223,
+          "openems": 4.639678955078125,
+          "relative_difference": 0.018740745017290283
+        },
+        "tissue_absorbed_w": {
+          "hertzon": 0.6524742598112043,
+          "openems": 0.950355048938141,
+          "relative_difference": 0.45654029204635527
+        },
+        "mean_sar_w_kg": {
+          "hertzon": 0.14326467843581192,
+          "openems": 0.2048320709556807,
+          "relative_difference": 0.4297457907425055
+        },
+        "bplus_mean_uT": {
+          "hertzon": 0.45237500275017056,
+          "openems": 0.5440455604207718,
+          "relative_difference": 0.20264284523525578
+        },
+        "phantom_absorbed_w_per_incident_w": {
+          "hertzon": 0.0060238396505709535,
+          "openems": 0.006789772473768924,
+          "relative_difference": 0.12715026754162917
+        },
+        "bplus_mean_uT_per_sqrt_incident_w": {
+          "hertzon": 0.04346639361288888,
+          "openems": 0.04598539678397194,
+          "relative_difference": 0.057952890997060136
+        },
+        "accepted_minus_phantom_w_per_incident_w": {
+          "hertzon": 0.003208462712305357,
+          "openems": 0.0003546863065104374,
+          "relative_difference": -0.8894528818583068
+        }
+      },
+      "absolute_complex_s11_difference": 0.05166589255190852,
+      "interior_bplus": {
+        "magnitude_nrmse": 0.19726108813691595,
+        "complex_correlation": 0.9992114669898784,
+        "global_phase_alignment_rad": 3.123677962824824,
+        "phase_aligned_complex_nrmse": 0.20003287265817454,
+        "reference_mean_magnitude": 4.4524201079212835e-07,
+        "candidate_mean_magnitude": 5.254112964511528e-07
+      },
+      "interior_bplus_per_incident": {
+        "magnitude_nrmse": 0.0577740470972991,
+        "complex_correlation": 0.9992114669898785,
+        "global_phase_alignment_rad": 3.1236779628248237,
+        "phase_aligned_complex_nrmse": 0.06562443758715318,
+        "reference_mean_magnitude": 4.2781021003436665e-08,
+        "candidate_mean_magnitude": 4.4410337478722835e-08
+      },
+      "interior_e_vector": {
+        "magnitude_nrmse": 0.18175417828600984,
+        "complex_correlation": 0.9991884802230055,
+        "global_phase_alignment_rad": 3.123381270084523,
+        "phase_aligned_complex_nrmse": 0.18309879676547247,
+        "reference_mean_magnitude": 8.222141586580873,
+        "candidate_mean_magnitude": 9.70148128350408
+      },
+      "interior_h_vector": {
+        "magnitude_nrmse": 0.1991128031175109,
+        "complex_correlation": 0.999198756745426,
+        "global_phase_alignment_rad": 3.123292362729383,
+        "phase_aligned_complex_nrmse": 0.20005097520549966,
+        "reference_mean_magnitude": 0.33615831071102475,
+        "candidate_mean_magnitude": 0.3975791616568469
+      }
+    },
+    {
+      "name": "openems-narrow-fine",
+      "openems_report": {
+        "schema_version": 1,
+        "source": "openEMS / Cartesian FDTD",
+        "native_version": "v0.37.0-50-g1d710c2",
+        "native_engine": "(GPU, backend: Metal (Apple M5 Max))",
+        "frequency_hz": 127732435.55399999,
+        "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+        "s11": [
+          0.8436148675488291,
+          0.5307446212449447
+        ],
+        "reference_impedance_ohm": 50,
+        "unscaled_incident_w": 1,
+        "unscaled_accepted_w": 0.006624102270131771,
+        "target_accepted_w": 1,
+        "duty_cycle": 1,
+        "spectral_normalization": "E,H / sqrt(P_acc), phase referenced to incident voltage; pulse units cancel",
+        "tissue_mass_kg": 4.59935998916626,
+        "tissue_absorbed_w": 0.9554448215741118,
+        "tissue_absorbed_fraction": 0.9554448215741118,
+        "mean_sar_w_kg": 0.20773429864690984,
+        "max_cell_local_sar_w_kg": 3.7897371545460246,
+        "bplus_mean_uT": 0.5472271954397079,
+        "bplus_coefficient_of_variation": 0.7799553570646308,
+        "energy_decay_db": -89.12,
+        "timesteps": 73920,
+        "mesh_cells": 2080768,
+        "cell_m": 0.004,
+        "power_balance_check": "within bound",
+        "sar_averaging": "cell-interpolated E local SAR; no 1 g or 10 g averaging",
+        "validation": "independent solver output; discretization and boundary convergence required",
+        "phantom_absorbed_w_per_incident_w": 0.006328964211574719,
+        "bplus_mean_uT_per_sqrt_incident_w": 0.04453804879741577,
+        "accepted_minus_phantom_w_per_incident_w": 0.000295138058557052
+      },
+      "bulk": {
+        "unscaled_accepted_w": {
+          "hertzon": 0.00923230236287631,
+          "openems": 0.006624102270131771,
+          "relative_difference": -0.28250808847338904
+        },
+        "tissue_mass_kg": {
+          "hertzon": 4.554327465325223,
+          "openems": 4.59935998916626,
+          "relative_difference": 0.00988785373557266
+        },
+        "tissue_absorbed_w": {
+          "hertzon": 0.6524742598112043,
+          "openems": 0.9554448215741118,
+          "relative_difference": 0.46434101760669155
+        },
+        "mean_sar_w_kg": {
+          "hertzon": 0.14326467843581192,
+          "openems": 0.20773429864690984,
+          "relative_difference": 0.45000359415166513
+        },
+        "bplus_mean_uT": {
+          "hertzon": 0.45237500275017056,
+          "openems": 0.5472271954397079,
+          "relative_difference": 0.20967602567094223
+        },
+        "phantom_absorbed_w_per_incident_w": {
+          "hertzon": 0.0060238396505709535,
+          "openems": 0.006328964211574719,
+          "relative_difference": 0.0506528358494478
+        },
+        "bplus_mean_uT_per_sqrt_incident_w": {
+          "hertzon": 0.04346639361288888,
+          "openems": 0.04453804879741577,
+          "relative_difference": 0.024654798695080027
+        },
+        "accepted_minus_phantom_w_per_incident_w": {
+          "hertzon": 0.003208462712305357,
+          "openems": 0.000295138058557052,
+          "relative_difference": -0.9080126262882487
+        }
+      },
+      "absolute_complex_s11_difference": 0.020073055100353163,
+      "interior_bplus": {
+        "magnitude_nrmse": 0.20328949789694875,
+        "complex_correlation": 0.9997428551098756,
+        "global_phase_alignment_rad": 3.136875507406301,
+        "phase_aligned_complex_nrmse": 0.2041856334869289,
+        "reference_mean_magnitude": 4.4524201079212835e-07,
+        "candidate_mean_magnitude": 5.32398454157587e-07
+      },
+      "interior_bplus_per_incident": {
+        "magnitude_nrmse": 0.023768002648192465,
+        "complex_correlation": 0.9997428551098757,
+        "global_phase_alignment_rad": 3.1368755074063013,
+        "phase_aligned_complex_nrmse": 0.02956721807631803,
+        "reference_mean_magnitude": 4.2781021003436665e-08,
+        "candidate_mean_magnitude": 4.333115848141698e-08
+      },
+      "interior_e_vector": {
+        "magnitude_nrmse": 0.19637588091857336,
+        "complex_correlation": 0.9996443432215834,
+        "global_phase_alignment_rad": 3.136925851313426,
+        "phase_aligned_complex_nrmse": 0.19694161551013503,
+        "reference_mean_magnitude": 8.222141586580873,
+        "candidate_mean_magnitude": 9.8381099786789
+      },
+      "interior_h_vector": {
+        "magnitude_nrmse": 0.20380869661321285,
+        "complex_correlation": 0.9997297010795738,
+        "global_phase_alignment_rad": 3.136488526624545,
+        "phase_aligned_complex_nrmse": 0.20421510346806365,
+        "reference_mean_magnitude": 0.33615831071102475,
+        "candidate_mean_magnitude": 0.4023246645746643
+      }
+    }
+  ],
+  "common_interior": {
+    "inset_m": 0.015,
+    "spacing_m": 0.005,
+    "points": 21979
+  },
+  "interpolation": "FEM tet4/tet10 shape functions; FDTD trilinear complex cell-centre fields",
+  "normalization": "1 W net accepted at 50 ohm feed; no amplitude fitting",
+  "peak_sar_comparison": "omitted: FEM element means and FDTD cell-interpolated local SAR are different estimators",
+  "input_sha256": {
+    "hertzon/mesh.npz": "d691befcb2be4d63958264b271ff3482ee3159e0aef013a00265c55306883a03",
+    "hertzon/fields_LastAdaptive.npz": "28f81d010df80c81cbc4d21e1270f0fb6fbbecb509b405c3058cef3ce0a52e85",
+    "hertzon/sparams_LastAdaptive.npz": "a9955e034d7b279623de7da8cef34da42b966085adf1c1bb08d163ec94ad1411",
+    "openems-narrow-coarse/fields.npz": "d45a1b3d4feace1f91d4c902bdfa3be6f0430f13885f874a9c494af2d05e901d",
+    "openems-narrow-coarse/report.json": "88ca2755c733c692ef4ba822d854258c8d0710ba5074699476000a5db2003dbf",
+    "openems-narrow-coarse/manifest.json": "bdb6fce6c440e59fbb83ec62df6373e51d05db21a56b793f0067b5d5953ed1dc",
+    "openems-narrow-fine/fields.npz": "03bdd379564058997808023326cc992114126ddcc00c27548d00eb9922f5e35d",
+    "openems-narrow-fine/report.json": "657f8f9dd51353f325d9454a86cbfca904f23f3842e896c0b923ca456d9f266c",
+    "openems-narrow-fine/manifest.json": "186cf556953226efa92a8c8f5981a28382c6adf3cafac8a8c77ec15ab00e9fb5"
+  },
+  "interpretation": "numerical cross-check; agreement and physical validation are not assumed"
+}

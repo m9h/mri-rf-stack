@@ -1,0 +1,36 @@
+{
+  "frequency_hz": 127732435.55399999,
+  "windows": [
+    {
+      "window_fraction": 0.5,
+      "s11": [
+        0.8263220420213578,
+        0.5573748563044928
+      ],
+      "accepted_fraction": 0.006525152429199266,
+      "absolute_s11_change_from_full_window": 0.00023115303273678583,
+      "relative_accepted_fraction_change": -0.061891432320088424
+    },
+    {
+      "window_fraction": 0.75,
+      "s11": [
+        0.8259978438457852,
+        0.5569911758341474
+      ],
+      "accepted_fraction": 0.007488392005007727,
+      "absolute_s11_change_from_full_window": 0.000272828669161685,
+      "relative_accepted_fraction_change": 0.07659166192161493
+    },
+    {
+      "window_fraction": 1.0,
+      "s11": [
+        0.8261890477830229,
+        0.5571857947877499
+      ],
+      "accepted_fraction": 0.006955647410125443,
+      "absolute_s11_change_from_full_window": 0.0,
+      "relative_accepted_fraction_change": 0.0
+    }
+  ],
+  "scope": "port spectra only; no spatial-field convergence claim"
+}

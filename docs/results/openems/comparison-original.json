@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "physical_config": {
+    "b0_t": 3.0,
+    "rungs": 8,
+    "radius_m": 0.15,
+    "length_m": 0.26,
+    "strip_width_m": 0.012,
+    "gap_m": 0.008,
+    "capacitance_f": 3e-11,
+    "shield_radius_m": 0.2,
+    "shield_length_m": 0.42,
+    "phantom_radius_m": 0.09,
+    "phantom_length_m": 0.18,
+    "epsilon_r": 60.0,
+    "sigma_s_m": 0.5,
+    "density_kg_m3": 1000.0,
+    "air_margin_m": 0.12,
+    "mesh_m": 0.035,
+    "passes": 12
+  },
+  "hertzon_report": {
+    "schema_version": 1,
+    "source": "Hertzon 0.1.25 / EMerge 3.0.0a25",
+    "frequency_hz": 127732435.554,
+    "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+    "drive_sqrt_w": [
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "unscaled_incident_w": 1.0,
+    "unscaled_accepted_w": 0.014601473271069976,
+    "target_accepted_w": 1.0,
+    "duty_cycle": 1.0,
+    "selected_volumes": [
+      "Phantom"
+    ],
+    "tissue_mass_kg": 4.520480115658417,
+    "tissue_absorbed_w": 0.7523719734056866,
+    "tissue_absorbed_fraction": 0.7523719734056866,
+    "mean_sar_w_kg": 0.1664362975073284,
+    "max_element_mean_sar_w_kg": 2.7521589108329443,
+    "bplus_mean_uT": 0.4821553227919201,
+    "bplus_coefficient_of_variation": 0.7989169324158852,
+    "tetrahedra_total": 16189,
+    "tetrahedra_tissue": 1085,
+    "convergence": {
+      "passes": [
+        {
+          "pass": 1,
+          "tets": 3451,
+          "time": 0.5657107830047607,
+          "S": [
+            [
+              [
+                0.7121258756370736,
+                0.6655479603798438
+              ]
+            ]
+          ],
+          "memory_mb": 396.4
+        },
+        {
+          "pass": 2,
+          "tets": 5016,
+          "time": 0.7162749767303467,
+          "S": [
+            [
+              [
+                0.5774760558045019,
+                0.8045101192554374
+              ]
+            ]
+          ],
+          "delta_tets": 45.34917415241959,
+          "memory_mb": 470.8,
+          "delta_s": 0.1934969136195969,
+          "delta_mag": 0.015591507928944703,
+          "delta_phase": 11.26565761672035,
+          "passed": false
+        },
+        {
+          "pass": 3,
+          "tets": 6615,
+          "time": 0.398082971572876,
+          "S": [
+            [
+              [
+                0.6163476276661346,
+                0.7762784249865113
+              ]
+            ]
+          ],
+          "delta_tets": 31.877990430622006,
+          "memory_mb": 531.8,
+          "delta_s": 0.04804193647521076,
+          "delta_mag": 0.0008970213645235203,
+          "delta_phase": 2.778061926573164,
+          "passed": false
+        },
+        {
+          "pass": 4,
+          "tets": 8000,
+          "time": 0.48241591453552246,
+          "S": [
+            [
+              [
+                0.6484103787480286,
+                0.7505865462332266
+              ]
+            ]
+          ],
+          "delta_tets": 20.937263794406658,
+          "memory_mb": 543.3,
+          "delta_s": 0.04108640457393395,
+          "delta_mag": 0.0006674413564428106,
+          "delta_phase": 2.3740164004060347,
+          "passed": false
+        },
+        {
+          "pass": 5,
+          "tets": 10491,
+          "time": 1.0033128261566162,
+          "S": [
+            [
+              [
+                0.6693256823798394,
+                0.732604183695988
+              ]
+            ]
+          ],
+          "delta_tets": 31.137499999999996,
+          "memory_mb": 673.4,
+          "delta_s": 0.02758288035052752,
+          "delta_mag": 0.0004483303501027214,
+          "delta_phase": 1.5928091690358308,
+          "passed": false
+        },
+        {
+          "pass": 6,
+          "tets": 13224,
+          "time": 0.873511791229248,
+          "S": [
+            [
+              [
+                0.6991292020475612,
+                0.704560020154939
+              ]
+            ]
+          ],
+          "delta_tets": 26.05090077209036,
+          "memory_mb": 764.4,
+          "delta_s": 0.04092340275809657,
+          "delta_mag": 0.00024218185079050158,
+          "delta_phase": 2.3627148389645174,
+          "passed": false
+        },
+        {
+          "pass": 7,
+          "tets": 16189,
+          "time": 1.1018309593200684,
+          "S": [
+            [
+              [
+                0.7090116304945984,
+                0.6947668922396354
+              ]
+            ]
+          ],
+          "delta_tets": 22.42135511191772,
+          "memory_mb": 825.5,
+          "delta_s": 0.013912862623353532,
+          "delta_mag": 0.00010682022566110838,
+          "delta_phase": 0.8030587105642403,
+          "passed": true
+        }
+      ],
+      "converged": true,
+      "max_delta_s": 0.02,
+      "final_tets": 16189,
+      "frequencies": [
+        127732435.55399999
+      ]
+    },
+    "validation": "research output; field/mesh convergence and independent solver checks required",
+    "power_balance_check": "within bound",
+    "sar_averaging": "tetrahedron mean only; no 1 g or 10 g averaging",
+    "s11": [
+      0.7090116304945984,
+      0.6947668922396354
+    ],
+    "phantom_absorbed_w_per_incident_w": 0.010985739259585304,
+    "bplus_mean_uT_per_sqrt_incident_w": 0.05826198867347633,
+    "accepted_minus_phantom_w_per_incident_w": 0.003615734011484672
+  },
+  "comparisons": [
+    {
+      "name": "openems-narrow-coarse",
+      "openems_report": {
+        "schema_version": 1,
+        "source": "openEMS / Cartesian FDTD",
+        "native_version": "v0.37.0-50-g1d710c2",
+        "native_engine": "(GPU, backend: Metal (Apple M5 Max))",
+        "frequency_hz": 127732435.55399999,
+        "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+        "s11": [
+          0.8261174894822093,
+          0.5571224594210257
+        ],
+        "reference_impedance_ohm": 50,
+        "unscaled_incident_w": 1,
+        "unscaled_accepted_w": 0.007144458780279361,
+        "target_accepted_w": 1,
+        "duty_cycle": 1,
+        "spectral_normalization": "E,H / sqrt(P_acc), phase referenced to incident voltage; pulse units cancel",
+        "tissue_mass_kg": 4.639678955078125,
+        "tissue_absorbed_w": 0.950355048938141,
+        "tissue_absorbed_fraction": 0.950355048938141,
+        "mean_sar_w_kg": 0.2048320709556807,
+        "max_cell_local_sar_w_kg": 3.6023806804055685,
+        "bplus_mean_uT": 0.5440455604207718,
+        "bplus_coefficient_of_variation": 0.8003263854309125,
+        "energy_decay_db": -88.45,
+        "timesteps": 39920,
+        "mesh_cells": 627984,
+        "cell_m": 0.006,
+        "power_balance_check": "within bound",
+        "sar_averaging": "cell-interpolated E local SAR; no 1 g or 10 g averaging",
+        "validation": "independent solver output; discretization and boundary convergence required",
+        "phantom_absorbed_w_per_incident_w": 0.006789772473768924,
+        "bplus_mean_uT_per_sqrt_incident_w": 0.04598539678397194,
+        "accepted_minus_phantom_w_per_incident_w": 0.0003546863065104374
+      },
+      "bulk": {
+        "unscaled_accepted_w": {
+          "hertzon": 0.014601473271069976,
+          "openems": 0.007144458780279361,
+          "relative_difference": -0.5107028826717959
+        },
+        "tissue_mass_kg": {
+          "hertzon": 4.520480115658417,
+          "openems": 4.639678955078125,
+          "relative_difference": 0.02636862376782001
+        },
+        "tissue_absorbed_w": {
+          "hertzon": 0.7523719734056866,
+          "openems": 0.950355048938141,
+          "relative_difference": 0.26314520281273146
+        },
+        "mean_sar_w_kg": {
+          "hertzon": 0.1664362975073284,
+          "openems": 0.2048320709556807,
+          "relative_difference": 0.230693508708109
+        },
+        "bplus_mean_uT": {
+          "hertzon": 0.4821553227919201,
+          "openems": 0.5440455604207718,
+          "relative_difference": 0.12836161855577233
+        },
+        "phantom_absorbed_w_per_incident_w": {
+          "hertzon": 0.010985739259585304,
+          "openems": 0.006789772473768924,
+          "relative_difference": -0.3819466934967809
+        },
+        "bplus_mean_uT_per_sqrt_incident_w": {
+          "hertzon": 0.05826198867347633,
+          "openems": 0.04598539678397194,
+          "relative_difference": -0.21071357447661732
+        },
+        "accepted_minus_phantom_w_per_incident_w": {
+          "hertzon": 0.003615734011484672,
+          "openems": 0.0003546863065104374,
+          "relative_difference": -0.9019047569915691
+        }
+      },
+      "absolute_complex_s11_difference": 0.1807201485589888,
+      "interior_bplus": {
+        "magnitude_nrmse": 0.18504287428909913,
+        "complex_correlation": 0.9756452404547853,
+        "global_phase_alignment_rad": -3.0140576285896343,
+        "phase_aligned_complex_nrmse": 0.25371641336799206,
+        "reference_mean_magnitude": 4.672398203477804e-07,
+        "candidate_mean_magnitude": 5.254112964511528e-07
+      },
+      "interior_bplus_per_incident": {
+        "magnitude_nrmse": 0.2620217262358129,
+        "complex_correlation": 0.975645240454784,
+        "global_phase_alignment_rad": -3.014057628589634,
+        "phase_aligned_complex_nrmse": 0.2995530990218605,
+        "reference_mean_magnitude": 5.645965072680037e-08,
+        "candidate_mean_magnitude": 4.4410337478722835e-08
+      },
+      "interior_e_vector": {
+        "magnitude_nrmse": 0.24119369032411794,
+        "complex_correlation": 0.9700905367808835,
+        "global_phase_alignment_rad": -2.999541431247964,
+        "phase_aligned_complex_nrmse": 0.28033469816432194,
+        "reference_mean_magnitude": 8.79280824285953,
+        "candidate_mean_magnitude": 9.70148128350408
+      },
+      "interior_h_vector": {
+        "magnitude_nrmse": 0.23749804390313214,
+        "complex_correlation": 0.9725370216361444,
+        "global_phase_alignment_rad": -2.999721123145601,
+        "phase_aligned_complex_nrmse": 0.2652316926829778,
+        "reference_mean_magnitude": 0.3604879281466876,
+        "candidate_mean_magnitude": 0.3975791616568469
+      }
+    },
+    {
+      "name": "openems-narrow-fine",
+      "openems_report": {
+        "schema_version": 1,
+        "source": "openEMS / Cartesian FDTD",
+        "native_version": "v0.37.0-50-g1d710c2",
+        "native_engine": "(GPU, backend: Metal (Apple M5 Max))",
+        "frequency_hz": 127732435.55399999,
+        "field_convention": "peak phasors; exp(+i omega t); B0 along +z",
+        "s11": [
+          0.8436148675488291,
+          0.5307446212449447
+        ],
+        "reference_impedance_ohm": 50,
+        "unscaled_incident_w": 1,
+        "unscaled_accepted_w": 0.006624102270131771,
+        "target_accepted_w": 1,
+        "duty_cycle": 1,
+        "spectral_normalization": "E,H / sqrt(P_acc), phase referenced to incident voltage; pulse units cancel",
+        "tissue_mass_kg": 4.59935998916626,
+        "tissue_absorbed_w": 0.9554448215741118,
+        "tissue_absorbed_fraction": 0.9554448215741118,
+        "mean_sar_w_kg": 0.20773429864690984,
+        "max_cell_local_sar_w_kg": 3.7897371545460246,
+        "bplus_mean_uT": 0.5472271954397079,
+        "bplus_coefficient_of_variation": 0.7799553570646308,
+        "energy_decay_db": -89.12,
+        "timesteps": 73920,
+        "mesh_cells": 2080768,
+        "cell_m": 0.004,
+        "power_balance_check": "within bound",
+        "sar_averaging": "cell-interpolated E local SAR; no 1 g or 10 g averaging",
+        "validation": "independent solver output; discretization and boundary convergence required",
+        "phantom_absorbed_w_per_incident_w": 0.006328964211574719,
+        "bplus_mean_uT_per_sqrt_incident_w": 0.04453804879741577,
+        "accepted_minus_phantom_w_per_incident_w": 0.000295138058557052
+      },
+      "bulk": {
+        "unscaled_accepted_w": {
+          "hertzon": 0.014601473271069976,
+          "openems": 0.006624102270131771,
+          "relative_difference": -0.5463401434116815
+        },
+        "tissue_mass_kg": {
+          "hertzon": 4.520480115658417,
+          "openems": 4.59935998916626,
+          "relative_difference": 0.017449445963629406
+        },
+        "tissue_absorbed_w": {
+          "hertzon": 0.7523719734056866,
+          "openems": 0.9554448215741118,
+          "relative_difference": 0.26991017122713346
+        },
+        "mean_sar_w_kg": {
+          "hertzon": 0.1664362975073284,
+          "openems": 0.20773429864690984,
+          "relative_difference": 0.24813097718520827
+        },
+        "bplus_mean_uT": {
+          "hertzon": 0.4821553227919201,
+          "openems": 0.5472271954397079,
+          "relative_difference": 0.13496039465247245
+        },
+        "phantom_absorbed_w_per_incident_w": {
+          "hertzon": 0.010985739259585304,
+          "openems": 0.006328964211574719,
+          "relative_difference": -0.42389273384105164
+        },
+        "bplus_mean_uT_per_sqrt_incident_w": {
+          "hertzon": 0.05826198867347633,
+          "openems": 0.04453804879741577,
+          "relative_difference": -0.2355556373637545
+        },
+        "accepted_minus_phantom_w_per_incident_w": {
+          "hertzon": 0.003615734011484672,
+          "openems": 0.000295138058557052,
+          "relative_difference": -0.9183739573708676
+        }
+      },
+      "absolute_complex_s11_difference": 0.21218231973407486,
+      "interior_bplus": {
+        "magnitude_nrmse": 0.19104161206796993,
+        "complex_correlation": 0.9749266865874002,
+        "global_phase_alignment_rad": -3.000547501683903,
+        "phase_aligned_complex_nrmse": 0.2602990952281495,
+        "reference_mean_magnitude": 4.672398203477804e-07,
+        "candidate_mean_magnitude": 5.32398454157587e-07
+      },
+      "interior_bplus_per_incident": {
+        "magnitude_nrmse": 0.2830805914303051,
+        "complex_correlation": 0.9749266865874002,
+        "global_phase_alignment_rad": -3.000547501683903,
+        "phase_aligned_complex_nrmse": 0.3181017241659258,
+        "reference_mean_magnitude": 5.645965072680037e-08,
+        "candidate_mean_magnitude": 4.333115848141698e-08
+      },
+      "interior_e_vector": {
+        "magnitude_nrmse": 0.2520514250773166,
+        "complex_correlation": 0.9696804083700806,
+        "global_phase_alignment_rad": -2.985736107375647,
+        "phase_aligned_complex_nrmse": 0.29026522345872846,
+        "reference_mean_magnitude": 8.79280824285953,
+        "candidate_mean_magnitude": 9.8381099786789
+      },
+      "interior_h_vector": {
+        "magnitude_nrmse": 0.24427233117422306,
+        "complex_correlation": 0.9718289192985338,
+        "global_phase_alignment_rad": -2.9862479979600436,
+        "phase_aligned_complex_nrmse": 0.2714704021138947,
+        "reference_mean_magnitude": 0.3604879281466876,
+        "candidate_mean_magnitude": 0.4023246645746643
+      }
+    }
+  ],
+  "common_interior": {
+    "inset_m": 0.015,
+    "spacing_m": 0.005,
+    "points": 21979
+  },
+  "interpolation": "FEM tet4/tet10 shape functions; FDTD trilinear complex cell-centre fields",
+  "normalization": "1 W net accepted at 50 ohm feed; no amplitude fitting",
+  "peak_sar_comparison": "omitted: FEM element means and FDTD cell-interpolated local SAR are different estimators",
+  "input_sha256": {
+    "hertzon/mesh.npz": "d90ebcd311cb9de49e39f138b328d11e6452bd61d928db6d7fac02df5c896a63",
+    "hertzon/fields_LastAdaptive.npz": "01c26f9722547b7997ae586c71eb22b26e4179394d81ac39069d53eb88abf963",
+    "hertzon/sparams_LastAdaptive.npz": "ff79363687c2515c7ac0ed50aaeccd4025601c0813bd2e006a6cc4981a642f85",
+    "openems-narrow-coarse/fields.npz": "d45a1b3d4feace1f91d4c902bdfa3be6f0430f13885f874a9c494af2d05e901d",
+    "openems-narrow-coarse/report.json": "88ca2755c733c692ef4ba822d854258c8d0710ba5074699476000a5db2003dbf",
+    "openems-narrow-coarse/manifest.json": "bdb6fce6c440e59fbb83ec62df6373e51d05db21a56b793f0067b5d5953ed1dc",
+    "openems-narrow-fine/fields.npz": "03bdd379564058997808023326cc992114126ddcc00c27548d00eb9922f5e35d",
+    "openems-narrow-fine/report.json": "657f8f9dd51353f325d9454a86cbfca904f23f3842e896c0b923ca456d9f266c",
+    "openems-narrow-fine/manifest.json": "186cf556953226efa92a8c8f5981a28382c6adf3cafac8a8c77ec15ab00e9fb5"
+  },
+  "interpretation": "numerical cross-check; agreement and physical validation are not assumed"
+}

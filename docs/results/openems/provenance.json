@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-11 America/Los_Angeles",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "python": "3.12.13",
+  "package_versions": {
+    "Hertzon": "0.1.25",
+    "emerge": "3.0.0a25",
+    "numpy": "2.2.6",
+    "scipy": "1.18.1",
+    "h5py": "3.16.0",
+    "openEMS": "0.37.0",
+    "CSXCAD": "0.7.0",
+    "gmsh": "4.15.2"
+  },
+  "source_revisions": {
+    "openEMS-Project": "622ac90e3f37700445df424779465e6a25d3c155",
+    "openEMS": "1d710c210920908a143b573f2babca05455f5479",
+    "CSXCAD": "fdff4b551580952009c7243a29693e139d1da108",
+    "fparser": "4b9c845b449b520c4b8c5f23c74cd04820084f81",
+    "Hertzon": "fc82a8f64afa8ec45d44e4f8851ff39f6ffaaa70"
+  },
+  "reference_runs": [
+    "openems-narrow-coarse",
+    "openems-narrow-fine",
+    "hertzon-higher-order"
+  ],
+  "notes": [
+    "Python fallback openEMS/CSXCAD versions do not identify development source; use Git revisions and native banners.",
+    "No source modifications were made to upstream openEMS or CSXCAD."
+  ]
+}

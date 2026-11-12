@@ -13,10 +13,23 @@ from mri_rf.fields import load_npz
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("folder", type=Path)
+    parser.add_argument(
+        "--incident", action="store_true", help="show 1 W incident instead of accepted"
+    )
     args = parser.parse_args()
     data = load_npz(args.folder / "common-grid.npz")
     report = json.loads((args.folder / "comparison.json").read_text())
     index = len(report["comparisons"]) - 1
+    if args.incident:
+        factors = {
+            "hertzon": np.sqrt(report["hertzon_report"]["unscaled_accepted_w"]),
+            f"openems_{index}": np.sqrt(
+                report["comparisons"][index]["openems_report"]["unscaled_accepted_w"]
+            ),
+        }
+        for prefix, scale in factors.items():
+            for field in ("E_V_m", "H_A_m", "Bplus_T"):
+                data[f"{prefix}_{field}"] *= scale
     plane = np.isclose(data["points_m"][:, 2], 0)
     points = data["points_m"][plane]
     axes = [np.unique(points[:, i]) for i in (0, 1)]
@@ -86,11 +99,13 @@ def main():
         ax.set_ylabel("y (mm)")
         ax.set_aspect("equal")
     inset = report["common_interior"]["inset_m"] * 1e3
+    normalization = "incident" if args.incident else "accepted"
     fig.suptitle(
-        f"{config['b0_t']:g} T birdcage · 1 W accepted · z = 0\n"
+        f"{config['b0_t']:g} T birdcage · 1 W {normalization} · z = 0\n"
         f"Shared interior grid, {inset:g} mm inside phantom boundary"
     )
-    fig.savefig(args.folder / "fields-comparison.png", dpi=170)
+    filename = "fields-incident.png" if args.incident else "fields-comparison.png"
+    fig.savefig(args.folder / filename, dpi=170)
     plt.close(fig)
 
 

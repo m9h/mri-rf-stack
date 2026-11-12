@@ -1,0 +1,52 @@
+{
+  "cpu_vs_metal": {
+    "reference": "openems-coarse",
+    "candidate": "openems-coarse-metal",
+    "absolute_s11_difference": 2.7956926690738107e-08,
+    "relative_change": {
+      "unscaled_accepted_w": 5.336141259304483e-06,
+      "tissue_absorbed_w": -5.415992642365808e-06,
+      "bplus_mean_uT": -2.6789211371447408e-06
+    },
+    "input_sha256": {
+      "openems-coarse": "364fd7f5cf66d75a9f2eceaea0874ca90e4a0c02bfacc84d7c116d3fc4ac2890",
+      "openems-coarse-metal": "8ad975fbc586bbed1dcdbb159b5fad9321cbff2fb02a7abd294215b6dc9ee892"
+    }
+  },
+  "pulse_10_to_5_mhz": {
+    "reference": "openems-narrow-coarse",
+    "candidate": "openems-pulse-width",
+    "absolute_s11_difference": 1.3379256614443261e-06,
+    "relative_change": {
+      "unscaled_accepted_w": 0.000157165913935442,
+      "tissue_absorbed_w": -0.00016096545851052024,
+      "bplus_mean_uT": -8.045702111825204e-05
+    },
+    "input_sha256": {
+      "openems-narrow-coarse": "88ca2755c733c692ef4ba822d854258c8d0710ba5074699476000a5db2003dbf",
+      "openems-pulse-width": "4b3c7e065e350d03922c53a08286d8ce36161c1f64764f9b441cfd62059d5037"
+    }
+  },
+  "mesh_6_to_4_mm": {
+    "reference": "openems-narrow-coarse",
+    "candidate": "openems-narrow-fine",
+    "absolute_s11_difference": 0.03165357145804785,
+    "relative_change": {
+      "unscaled_accepted_w": -0.072833580002437,
+      "tissue_absorbed_w": 0.00535565380712999,
+      "bplus_mean_uT": 0.005848104001575427
+    },
+    "input_sha256": {
+      "openems-narrow-coarse": "88ca2755c733c692ef4ba822d854258c8d0710ba5074699476000a5db2003dbf",
+      "openems-narrow-fine": "657f8f9dd51353f325d9454a86cbfca904f23f3842e896c0b923ca456d9f266c"
+    }
+  },
+  "failed_strict_decay": {
+    "run": "openems-pulse-check",
+    "requested_energy_decay_db": -100,
+    "status": "aborted after late-time energy growth; excluded",
+    "steps": 1169643,
+    "final_energy_decay_db": -66.05
+  },
+  "scope": "Sensitivity diagnostics, not full numerical or physical validation. CPU/GPU uses the earlier 80 MHz pulse; final references use 10 MHz."
+}

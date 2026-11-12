@@ -138,15 +138,17 @@ def discretize(config, cell_m):
     return (x, y, z), shield, rings, rungs
 
 
-def build(config, cell_m, end_criteria, max_steps):
+def build(config, cell_m, end_criteria, max_steps, bandwidth_hz=10e6, dump_oversampling=4):
     from CSXCAD import ContinuousStructure
     from openEMS import openEMS
 
     c = config
     axes, shield, rings, rungs = discretize(c, cell_m)
     frequency = c.b0_t * PROTON_HZ_PER_T
+    if not np.isfinite(bandwidth_hz) or not 0 < bandwidth_hz < frequency:
+        raise ValueError("Gaussian cutoff must be positive and below the centre frequency")
     fdtd = openEMS(NrTS=max_steps, EndCriteria=end_criteria, CellConstantMaterial=True)
-    fdtd.SetGaussExcite(frequency, 80e6)
+    fdtd.SetGaussExcite(frequency, bandwidth_hz)
     fdtd.SetBoundaryCond(["MUR"] * 6)
     csx = ContinuousStructure()
     fdtd.SetCSX(csx)
@@ -205,12 +207,21 @@ def build(config, cell_m, end_criteria, max_steps):
     ]
     stop = [-v for v in start]
     for name, kind in (("E_raw", 29), ("H", 11)):
-        dump = csx.AddDump(name, dump_type=kind, dump_mode=2, file_type=1, frequency=[frequency])
+        dump = csx.AddDump(
+            name,
+            dump_type=kind,
+            dump_mode=2,
+            file_type=1,
+            frequency=[frequency],
+            over_sampling=dump_oversampling,
+        )
         dump.AddBox(start, stop)
     manifest = {
         "config": asdict(c),
         "cell_m": cell_m,
         "frequency_hz": frequency,
+        "gaussian_cutoff_hz": bandwidth_hz,
+        "dump_oversampling": dump_oversampling,
         "end_criteria": end_criteria,
         "max_steps": max_steps,
         "boundary": "first-order Mur on the same nominal outer box as Hertzon",
@@ -247,7 +258,8 @@ def analyze(folder, port, manifest):
     if not np.isclose(power / float(port.P_inc[0]), accepted_fraction, rtol=1e-7):
         raise ValueError("port power-wave and VI normalization disagree")
     # Both port and field DFT use 2*dt*sum(x*exp(-iwt)). Their pulse spectral
-    # units cancel here; rotate to real-positive incident voltage as in FEM.
+    # units cancel here; rotate to real-positive native incident voltage.
+    # Terminal orientation can leave a global phase difference from FEM.
     scale = np.exp(-1j * np.angle(port.uf_inc[0])) / np.sqrt(power)
     with HDF5Dump(str(folder / "E_raw.h5")) as dump:
         if len(dump.frequencies) != 1 or not np.isclose(dump.frequencies[0], f, rtol=1e-9):
@@ -357,11 +369,12 @@ def run(
     config,
     *,
     cell_m=0.006,
-    end_criteria=1e-6,
+    end_criteria=1e-8,
     max_steps=2000000,
     engine="multithreaded",
     threads=4,
     postprocess=False,
+    bandwidth_hz=10e6,
 ):
     folder = Path(folder).resolve()
     if not np.isfinite(end_criteria) or not 0 < end_criteria < 1:
@@ -376,7 +389,11 @@ def run(
         cell_m, end_criteria, max_steps = [
             previous[k] for k in ("cell_m", "end_criteria", "max_steps")
         ]
-    fdtd, port, manifest, geometry = build(config, cell_m, end_criteria, max_steps)
+        bandwidth_hz = previous.get("gaussian_cutoff_hz", 80e6)
+    dump_oversampling = previous.get("dump_oversampling", 1) if postprocess else 4
+    fdtd, port, manifest, geometry = build(
+        config, cell_m, end_criteria, max_steps, bandwidth_hz, dump_oversampling
+    )
     folder.mkdir(parents=True, exist_ok=True)
     if not postprocess:
         manifest["requested_engine"] = engine
@@ -430,7 +447,13 @@ def main(argv=None):
     parser.add_argument("output", type=Path)
     parser.add_argument("--config", type=Path)
     parser.add_argument("--cell-mm", type=float, default=6)
-    parser.add_argument("--end-criteria", type=float, default=1e-6)
+    parser.add_argument("--end-criteria", type=float, default=1e-8)
+    parser.add_argument(
+        "--bandwidth-mhz",
+        type=float,
+        default=10,
+        help="Gaussian pulse's 20 dB cutoff offset from the centre frequency",
+    )
     parser.add_argument("--max-steps", type=int, default=2000000)
     parser.add_argument(
         "--engine", choices=("basic", "multithreaded", "gpu"), default="multithreaded"
@@ -443,7 +466,12 @@ def main(argv=None):
         folder = args.output.resolve()
         m = json.loads((folder / "manifest.json").read_text())
         fdtd, _, _, _ = build(
-            Birdcage(**m["config"]), m["cell_m"], m["end_criteria"], m["max_steps"]
+            Birdcage(**m["config"]),
+            m["cell_m"],
+            m["end_criteria"],
+            m["max_steps"],
+            m.get("gaussian_cutoff_hz", 80e6),
+            m.get("dump_oversampling", 1),
         )
         code = fdtd.Run(
             str(folder),
@@ -466,6 +494,7 @@ def main(argv=None):
         engine=args.engine,
         threads=args.threads,
         postprocess=args.postprocess,
+        bandwidth_hz=args.bandwidth_mhz * 1e6,
     )
     print(json.dumps(report, indent=2))
 
